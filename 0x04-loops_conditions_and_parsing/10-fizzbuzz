@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#Bash script that displays numbers from 1 to 100.
+n=0
+while [ $n -lt 101 ]
+do
+    if [ $((n % 3)) -eq 0 ] && [ $((n % 5)) -eq 0 ]
+    then
+            echo "fizzbuzz"
+    elif [ $((n % 3)) -eq 0 ]
+    then
+        echo "fizz"
+    elif [ $((n % 5)) -eq 0 ]
+    then
+        echo "buzz"
+    else
+        echo "$n"
+    fi
+    ((n++))
+done
