@@ -2,10 +2,10 @@
 #SSH client configuration must be configured to use the private key ~/.ssh/school
 #SSH client configuration must be configured to refuse to authenticate using a password
 
-file_line { 'path':
+file_line { 'identity file':
  ensure => 'present,
  path   => '/etc/ssh/ssh_config',
- line   => '	path ~/.ssh/school',
+ line   => '	IdentityFile ~/.ssh/school',
 }
 
 file_line {' disabled password',
