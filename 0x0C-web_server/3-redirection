@@ -12,6 +12,7 @@ ufw allow 'HTTP'
 echo "Hello World!" > /var/www/html/index.html
 
 #redirection confg
-sed -i '/server_name _;/a location \/redirect_me {\\treturn 301 https:\/\/alxafrica.com\/};' /etc/nginx/sites-available/default
+sed -i '/server_name _;/a \ location \/redirect_me {\n\treturn 301 https:\/\/www.example.com;\n}' /etc/nginx/sites-available/default
+
 #restart nginx
 service nginx restart
