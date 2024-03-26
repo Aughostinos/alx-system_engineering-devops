@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#ensura that apache is installed and turned on
+sudo apt-get -y install apache2 
+service apache2 start
