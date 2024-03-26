@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#Configure your Nginx server so that
+#/redirect_me is redirecting to another page.
+
+apt-get -y update
+apt-get -y install nginx
+
+#Nginx should be listening on port 80
+ufw allow 'HTTP' 
+
+#HTML page
+echo "Hello World!" > /var/www/html/index.html
+
+#redirection confg
+redirect_target = "location \/redirect_me https://alxafrica.com/ permanent;"
+sed -i "s/server_name.*/a\  $redirect_target" /etc/nginx/sites-available/default; 
+
+#restart nginx
+service nginx restart
