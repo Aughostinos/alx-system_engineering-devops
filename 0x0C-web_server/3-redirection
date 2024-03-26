@@ -12,8 +12,6 @@ ufw allow 'HTTP'
 echo "Hello World!" > /var/www/html/index.html
 
 #redirection confg
-redirect_target = "location \/redirect_me https://alxafrica.com/ permanent;"
-sed -i "s/server_name.*/a\  $redirect_target" /etc/nginx/sites-available/default; 
-
+sed -i '/server_name _;/a \\treturn 301 https://alxafrica.com/;' /etc/nginx/sites-available/default
 #restart nginx
 service nginx restart
