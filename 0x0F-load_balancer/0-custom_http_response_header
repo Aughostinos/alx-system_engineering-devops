@@ -5,4 +5,4 @@
 custom_header='add_header X-Served-By $hostname;'
 nginx_config='/etc/nginx/sites-available/default'
 
-sudo sed -i "/server_name _;/a \\\t$HEADER_CONFIG" nginx_config
+sudo sed -i "/server_name _;/a \\\t$custom_header" $nginx_config
