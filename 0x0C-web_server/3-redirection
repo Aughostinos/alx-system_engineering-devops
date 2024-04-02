@@ -13,8 +13,7 @@ echo "Hello World!" > /var/www/html/index.html
 
 #redirection confg
 confg_path=/etc/nginx/sites-available/default
-line_to_replace="server_name _; \n\trewrite ^\/redirect_me https:\/\/www.alxafrica.com permanent;"
-sed -i "s/server_name _;/${line_to_replace}" $confg_path
+sed -i "/server_name _;/a \\\trewrite ^\\/redirect_me https:\\/\\/www.alxafrica.com permanent;" $confg_path
 
 #restart nginx
 service nginx restart
