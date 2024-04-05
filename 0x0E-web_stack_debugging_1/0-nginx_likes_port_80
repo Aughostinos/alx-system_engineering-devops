@@ -9,5 +9,8 @@ apt-get update && apt-get install -y nginx
 
 ufw allow'HTTP'
 
+#set nginx to listen on all  IPv4 IPs on port 80
+sed -i '/listen \[::\]:80 default_server;/a \    listen 80;' /etc/nginx/sites-available/default
+
 #restart nginx
 service nginx restart
