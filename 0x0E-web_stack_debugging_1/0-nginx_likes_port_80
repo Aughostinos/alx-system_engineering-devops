@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 #Nginx must be running, and listening on port 80 of all the server’s active IPv4 IPs
-# a Bash script that configures a server to the above requirements
-
-#update and install nginx if not installed
-apt-get update && apt-get install -y nginx
 
 #enable traffic ib port 80
 
-ufw allow 'HTTP'
+sudo ufw allow 'HTTP'
 
 #set nginx to listen on all  IPv4 IPs on port 80
 sed -i '/listen \[::\]:80 default_server;/a \    listen 80;' /etc/nginx/sites-available/default
