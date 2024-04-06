@@ -7,7 +7,6 @@ sudo ufw allow 'HTTP'
 
 #set nginx to listen on all  IPv4 IPs on port 80
 cp /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-sed -i '/listen \[::\]:80 default_server;/a \    listen 80;' /etc/nginx/sites-available/default
 
 #restart nginx
 service nginx restart
