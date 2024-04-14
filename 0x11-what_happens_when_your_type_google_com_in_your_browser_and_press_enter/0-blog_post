@@ -1,0 +1,22 @@
+What happens when you type https://www.google.com in your browser and press Enter
+Although it seems like a very simple action, it has a complex sequence of events. It goes through 8 steps of techniques and protocols; let's go through it step by step. 
+1st step, the DNS lookup:
+DNS refers to a domain name system, which is similar to looking for a phone number in a phonebook. When we type https://www.google.com, the browser asks the DNS server for the IP associated with google.com, and when it receives it, it knows where to send the request to this website. 
+2nd step, TCP/IP Connection:
+The browser must establish a connection using TCP/IP, ensuring that the data packets are routed correctly from the browser to the Google server. This process breaks down the request into smaller packets and sends them. 
+3rd step, Firewall:
+A firewall is a security system and it controls the network traffic based on predefined security rules. The request must pass through many firewalls before reaches Google’s servers. This is an essential step to protect both the client and the server. 
+4th step HTTPS/ SSL
+The "https://" indicates that the connection is secured, HTTPS encrypts the data exchange between the client and the server; to do this, it uses SSL (secure sockets layer). So when the browser establishes a connection with Google’s server, it does a handshake to agree on encryption methods and exchange keys before any real data is transferred. 
+
+5th step, Load Balancer:
+Due to the huge number of requests that Google receives every second, they use a load balancer, which has a very important role. It distributes the incoming network traffic across multiple servers. This step ensures that no single server becomes overwhelmed. 
+
+6th step, Web Server:
+After passing the load balancer, the request reaches one of Google’s web servers. The role of the web server is to handle the requests that involve static content like HTML pages and JavaScript files. 
+
+7th step, Application Server
+If the request needs more than the static content, the web server forwards it to an application server, which is more dynamic than a web server and can perform complex tasks, such as running a script and ensuring that the application logic is executed correctly to generate the page content. 
+8th step, Database 
+This is the last step. The application server queries a database if the request needs to retrieve the data, such as login information. 
+
