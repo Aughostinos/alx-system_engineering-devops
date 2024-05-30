@@ -10,7 +10,14 @@ sudo ufw allow 'HTTP'
 
 #HTML page
 echo "Hello World!" > /var/www/html/index.html
-echo "404 Not Found" > /var/html/404.html
+echo "<html>
+<head>
+    <title>404 Not Found</title>
+</head>
+<body>
+    <h1>Ceci n'est pas une page</h1>
+</body>
+</html>" > /var/www/html/404.html
 
 #redirection confg
 confg_path=/etc/nginx/sites-available/default
