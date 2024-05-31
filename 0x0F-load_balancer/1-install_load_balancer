@@ -7,7 +7,7 @@ sudo apt-get update
 sudo apt-get install -y haproxy
 
 # Configure HAProxy
-sudo tee /etc/haproxy/haproxy.cfg > /dev/null <<EOL
+sudo tee /etc/haproxy/haproxy.cfg > /dev/null <<EOT
 global
     log /dev/log    local0
     log /dev/log    local1 notice
@@ -43,13 +43,10 @@ backend http_back
     balance roundrobin
     server web01 54.237.210.6:80 check
     server web02 54.167.182.217:80 check
-EOL
+EOT
 
 # Enable HAProxy service
 sudo update-rc.d haproxy defaults
 
 # Start HAProxy service
 sudo service haproxy start
-
-# Confirm HAProxy status
-sudo service haproxy status
