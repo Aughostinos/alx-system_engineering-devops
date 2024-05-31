@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# This script installs and configures HAProxy to distribute traffic between web-01 and web-02 using roundrobin algorithm
-
+# This script installs and configures HAProxy to distribute traffic between web-01 and web-02 using the roundrobin algorithm.
 
 # Update and install necessary packages
 sudo apt-get update
@@ -41,8 +40,8 @@ frontend http_front
 
 backend http_back
     balance roundrobin
-    server web01 54.237.210.6:80 check
-    server web02 54.167.182.217:80 check
+    server web01 [STUDENT_ID]-web-01:80 check
+    server web02 [STUDENT_ID]-web-02:80 check
 EOT
 
 # Enable HAProxy service
@@ -50,3 +49,9 @@ sudo update-rc.d haproxy defaults
 
 # Start HAProxy service
 sudo service haproxy start
+
+# Test the configuration
+echo "Testing HAProxy configuration..."
+for i in {1..2}; do
+    curl -Is localhost | grep 'X-Served-By'
+done
