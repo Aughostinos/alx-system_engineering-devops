@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 # This script installs and configures HAProxy to distribute traffic between web-01 and web-02 using roundrobin algorithm
 
-# Variables
-WEB_01_HOSTNAME="492381-web-01"
-WEB_02_HOSTNAME="492381-web-02"
-
-udo hostnamectl set-hostname lb-01
 
 # Update and install necessary packages
 sudo apt-get update
@@ -46,8 +41,8 @@ frontend http_front
 
 backend http_back
     balance roundrobin
-    server web01 $WEB_01_HOSTNAME:80 check
-    server web02 $WEB_02_HOSTNAME:80 check
+    server web01 54.237.210.6:80 check
+    server web02 54.167.182.217:80 check
 EOL
 
 # Enable HAProxy service
