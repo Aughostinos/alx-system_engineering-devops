@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#0. World wide web
 
 function get_subdomain_info {
     local domain=$1
