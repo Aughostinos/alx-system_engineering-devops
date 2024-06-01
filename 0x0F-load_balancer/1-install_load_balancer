@@ -49,9 +49,3 @@ sudo update-rc.d haproxy defaults
 
 # Start HAProxy service
 sudo service haproxy start
-
-# Test the configuration
-echo "Testing HAProxy configuration..."
-for i in {1..2}; do
-    curl -Is localhost | grep 'X-Served-By'
-done
