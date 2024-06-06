@@ -17,8 +17,8 @@ frontend http_front
 
 backend http_back
     balance roundrobin
-    server 492381-web-01 35.174.209.226:80 check
-    server 492381-web-02 18.209.178.235:80 check
+    server 492381-web-01 52.3.249.236:80 check
+    server 492381-web-02 100.25.20.88:80 check
 EOT'
 
 # Enable and start HAProxy 
