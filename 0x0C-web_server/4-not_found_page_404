@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
-#configure your Nginx server so that
-#/redirect_me is redirecting to another page.
+# Configure your Nginx server so that /redirect_me is redirecting to another page
+# and set a custom 404 page.
 
+# Update package lists and install Nginx
 apt-get -y update
 apt-get -y install nginx
 
-#Nginx should be listening on port 80
-sudo ufw allow 'HTTP' 
+# Allow HTTP traffic
+sudo ufw allow 'HTTP'
 
-#HTML page
+# Create the default HTML page
 echo "Hello World!" > /var/www/html/index.html
+
+# Create the custom 404 error page
 echo "<html>
 <head>
     <title>404 Not Found</title>
@@ -19,12 +22,10 @@ echo "<html>
 </body>
 </html>" > /var/www/html/404.html
 
-#redirection confg
-confg_path=/etc/nginx/sites-available/default
-sed -i "/server_name _;/a \\\trewrite ^\\/redirect_me https:\\/\\/www.alxafrica.com permanent;" $confg_path
+# Configure redirection and custom 404 page
+config_path=/etc/nginx/sites-available/default
+sed -i "/server_name _;/a \\\trewrite ^\\/redirect_me https:\\/\\/www.alxafrica.com permanent;" $config_path
+sed -i "/server_name _;/a \ \n    error_page 404 \/404.html;\n    location = \/404.html {\n        internal;\n    }\n" $config_path
 
-#Configure your Nginx server to have a custom 404 page 
-ed -i '/server_name _;/a \ \n    error_page 404 \/404.html;\n    location = \/404.html {\n        internal;\n    }\n' /etc/nginx/sites-available/default
-
-#restart nginx
+# Restart Nginx to apply the changes
 service nginx restart
