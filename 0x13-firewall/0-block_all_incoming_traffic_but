@@ -1,0 +1,16 @@
+# update and install uwf
+sudo apt update
+sudo apt install ufw -y
+
+# Configure ufw so that it blocks all incoming traffic
+sudo ufw default deny incoming
+# Set default policy to allow all outgoing traffic
+sudo ufw default allow outgoing
+
+# allow connection on the required prots
+sudo ufw allow 80/tcp
+sudo ufw allow 22/tcp
+sudo ufw allow 443/tcp
+
+sudo ufw enable-y
+sudo ufw status
