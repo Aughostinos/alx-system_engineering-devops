@@ -4,7 +4,7 @@ This script fetches and displays the todo list progress
 for a given employee ID using a REST API.
 """
 
-import csv
+import json
 import requests
 import sys
 
@@ -41,15 +41,19 @@ def get_progress(employee_id):
         for task in completed_tasks:
             print(f"\t {task.get('title')}")"""
 
-        file_name = '{}.csv'.format(employee_id)
-        with open(file_name, 'w', newline='') as file:
-            writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+        file_name = '{}.json'.format(employee_id)
+        with open(file_name, 'w') as file:
             username = user_data.get('username')
-            for task in todos_data:
-                writer.writerow(
-                    [employee_id, username, task.get('completed'), task.get(
-                        'title')])
-
+            tasks =[
+                {
+                    "task": task.get('title'),
+                    "completed": task.get('completed'),
+                    "username": username
+                } for task in todos_data
+            ]
+            data = {str(employee_id): tasks}
+            json.dump(data, file)
+    
     except requests.RequestException as e:
         print(f"HTTP Request failed: {e}")
     except KeyError as e:
