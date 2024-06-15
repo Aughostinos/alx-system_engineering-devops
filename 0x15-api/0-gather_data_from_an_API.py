@@ -7,32 +7,38 @@ for a given employee ID using a REST API.
 import requests
 import sys
 
-
 def get_progress(employee_id):
-    """Fetches and displays the todo list progress an employee by ID."""
+    """Fetches and displays the todo list progress for an employee by ID."""
     try:
         # Fetch data
-        user_response = requests.get(f'https://jsonplaceholder.typicode.com/users/{employee_id}')
+        user_url ='https://jsonplaceholder.typicode.com/users/{}'.format(
+            employee_id)
+        user_response = requests.get(user_url)
         user_response.raise_for_status()
         user_data = user_response.json()
 
-        todos_response = requests.get(f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}')
+        todos_url = 'https://jsonplaceholder.typicode.com/todos?userId={}'.format(
+            employee_id)
+        todos_response = requests.get(todos_url)
         todos_response.raise_for_status()
         todos_data = todos_response.json()
 
         # Extract user name
         employee_name = user_data.get('name')
 
-        # get the number of completed tasks
+        # Get the number of completed tasks
         total_tasks = len(todos_data)
         completed_tasks = [task for task in todos_data if task.get('completed')]
         number_of_done_tasks = len(completed_tasks)
 
         # Print the list progress
-        print(f"Employee {employee_name} is done with tasks({number_of_done_tasks}/{total_tasks}):")
+        print(
+            f"Employee {employee_name} is done with tasks"
+            f"({number_of_done_tasks}/{total_tasks}):"
+        )
         for task in completed_tasks:
             print(f"\t {task.get('title')}")
-    
+
     except requests.RequestException as e:
         print(f"HTTP Request failed: {e}")
     except KeyError as e:
