@@ -41,7 +41,7 @@ def get_progress(employee_id):
         for task in completed_tasks:
             print(f"\t {task.get('title')}")"""
 
-        file_name = '{}.cvs'.format(employee_id)
+        file_name = '{}.csv'.format(employee_id)
         with open(file_name, 'w', newline='') as file:
             writer = csv.writer(file)
             username = user_data.get('username')
