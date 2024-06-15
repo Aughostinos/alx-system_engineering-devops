@@ -4,9 +4,9 @@ This script fetches and displays the todo list progress
 for a given employee ID using a REST API.
 """
 
+import csv
 import requests
 import sys
-import csv
 
 
 def get_progress(employee_id):
