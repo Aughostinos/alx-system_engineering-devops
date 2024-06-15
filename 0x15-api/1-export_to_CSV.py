@@ -34,12 +34,12 @@ def get_progress(employee_id):
         number_of_done_tasks = len(completed_tasks)
 
         # Print the list progress
-        print(
+        """print(
             f"Employee {employee_name} is done with tasks"
             f"({number_of_done_tasks}/{total_tasks}):"
         )
         for task in completed_tasks:
-            print(f"\t {task.get('title')}")
+            print(f"\t {task.get('title')}")"""
 
         file_name = '{}.cvs'.format(employee_id)
         with open(file_name, 'w', newline='') as file:
