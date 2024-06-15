@@ -43,7 +43,7 @@ def get_progress(employee_id):
 
         file_name = '{}.csv'.format(employee_id)
         with open(file_name, 'w', newline='') as file:
-            writer = csv.writer(file)
+            writer = csv.writer(file, quoting=csv.QUOTE_ALL)
             username = user_data.get('username')
             for task in todos_data:
                 writer.writerow(
@@ -60,7 +60,7 @@ def get_progress(employee_id):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: 0-gather_data_from_an_API.py <employee_id>")
+        print("Usage: 1-export_to_CSV.py <employee_id>")
         sys.exit(1)
 
     try:
