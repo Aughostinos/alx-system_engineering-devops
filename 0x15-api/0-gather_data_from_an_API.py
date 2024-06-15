@@ -1,14 +1,15 @@
 #!/usr/bin/python3
 """
-This script fetches and displays the TODO list progress
+This script fetches and displays the todo list progress
 for a given employee ID using a REST API.
 """
 
 import requests
 import sys
 
+
 def get_progress(employee_id):
-    """Fetches and displays the TODO list progress an employee by ID."""
+    """Fetches and displays the todo list progress an employee by ID."""
     try:
         # Fetch data
         user_response = requests.get(f'https://jsonplaceholder.typicode.com/users/{employee_id}')
