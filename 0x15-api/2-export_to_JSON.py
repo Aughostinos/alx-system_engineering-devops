@@ -44,7 +44,7 @@ def get_progress(employee_id):
         file_name = '{}.json'.format(employee_id)
         with open(file_name, 'w') as file:
             username = user_data.get('username')
-            tasks =[
+            tasks = [
                 {
                     "task": task.get('title'),
                     "completed": task.get('completed'),
@@ -53,7 +53,7 @@ def get_progress(employee_id):
             ]
             data = {str(employee_id): tasks}
             json.dump(data, file)
-    
+
     except requests.RequestException as e:
         print(f"HTTP Request failed: {e}")
     except KeyError as e:
