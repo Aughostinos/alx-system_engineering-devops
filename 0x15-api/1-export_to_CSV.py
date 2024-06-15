@@ -40,14 +40,15 @@ def get_progress(employee_id):
         )
         for task in completed_tasks:
             print(f"\t {task.get('title')}")
-            
+
         file_name = '{}.cvs'.format(employee_id)
         with open(file_name, 'w', newline='') as file:
             writer = csv.writer(file)
             username = user_data.get('username')
             for task in todos_data:
                 writer.writerow(
-                    [employee_id, username, task.get('completed'), task.get('title')])
+                    [employee_id, username, task.get('completed'), task.get(
+                        'title')])
 
     except requests.RequestException as e:
         print(f"HTTP Request failed: {e}")
