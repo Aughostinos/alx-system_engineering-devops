@@ -11,20 +11,20 @@ def get_progress(employee_id):
     """Fetches and displays the todo list progress for an employee by ID."""
     try:
         # Fetch data
-        user_url ='https://jsonplaceholder.typicode.com/users/{}'.format(
-            employee_id)
+        website = 'https://jsonplaceholder.typicode.com'
+        user_url = '{}/users/{}'.format(website, employee_id)
         user_response = requests.get(user_url)
         user_response.raise_for_status()
         user_data = user_response.json()
 
-        todos_url = 'https://jsonplaceholder.typicode.com/todos?userId={}'.format(
-            employee_id)
+        todos_url = '{}/todos?userId={}'.format(website, employee_id)
         todos_response = requests.get(todos_url)
         todos_response.raise_for_status()
         todos_data = todos_response.json()
 
         # Extract user name
         employee_name = user_data.get('name')
+        print (employee_name)
 
         # Get the number of completed tasks
         total_tasks = len(todos_data)
