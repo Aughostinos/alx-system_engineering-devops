@@ -7,6 +7,7 @@ for a given employee ID using a REST API.
 import requests
 import sys
 
+
 def get_progress(employee_id):
     """Fetches and displays the todo list progress for an employee by ID."""
     try:
@@ -24,11 +25,11 @@ def get_progress(employee_id):
 
         # Extract user name
         employee_name = user_data.get('name')
-        print (employee_name)
 
         # Get the number of completed tasks
         total_tasks = len(todos_data)
-        completed_tasks = [task for task in todos_data if task.get('completed')]
+        completed_tasks = [task for task in todos_data if task.get(
+            'completed')]
         number_of_done_tasks = len(completed_tasks)
 
         # Print the list progress
@@ -45,6 +46,7 @@ def get_progress(employee_id):
         print(f"Invalid response data: {e}")
     except ValueError as e:
         print(f"Invalid JSON data: {e}")
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
