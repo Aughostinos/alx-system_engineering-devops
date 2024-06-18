@@ -4,9 +4,9 @@ import requests
 
 
 # define the base url
-api_url = "https://www.reddit.com/r/{subreddit}/about.json"
+api_url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
 headers = {
-    "User-Agent": "my_function"
+    "User-Agent": "User 01"
 }
 
 
