@@ -8,14 +8,14 @@ def number_of_subscribers(subreddit):
     of subscribers (not active users, total subscribers) for a given
     subreddit. If an invalid subreddit is given, the function should return 0.
     """
-    api_url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    api_url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
     headers = {
-    "User-Agent": "User 01"
+    "User-Agent": 'User 01'
     }
 
     response = requests.get(api_url, headers=headers, allow_redirects=False)
     if response.status_code == 200:
         data = response.json()
-        return data['data']['subscribers']
+        return data.get('data').get('subscribers')
     else:
         return 0
