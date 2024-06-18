@@ -3,7 +3,7 @@
 import requests
 
 
-# define the base url
+# define the base url template
 api_url = "https://www.reddit.com/r/{subreddit}/about.json"
 headers = {
     "User-Agent": "my_function"
@@ -11,10 +11,11 @@ headers = {
 
 
 def number_of_subscribers(subreddit):
-    """a function that queries the Reddit API and returns the number
+    """A function that queries the Reddit API and returns the number
     of subscribers (not active users, total subscribers) for a given
     subreddit. If an invalid subreddit is given, the function should return 0.
     """
+    # format the URL with the subreddit name
     response = requests.get(api_url, headers=headers, allow_redirects=False)
     if response.status_code == 200:
         data = response.json()
