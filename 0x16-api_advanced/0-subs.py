@@ -18,7 +18,6 @@ def number_of_subscribers(subreddit):
             return data['data']['subscribers']
         else:
             print(f"Error: Received status code {response.status_code}")
-            print(response.content)
             return 0
     except requests.RequestException as e:
         print(f"Request Exception: {e}")
