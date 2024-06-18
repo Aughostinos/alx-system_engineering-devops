@@ -9,7 +9,7 @@ def number_of_subscribers(subreddit):
     If an invalid subreddit is given, returns 0.
     """
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'reddit-subscriber-count-script/1.0 by your_username'}
+    headers = {"User-Agent": 'reddit-subscriber-count-script/1.0 by Augustinos Abusaif'}
 
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
