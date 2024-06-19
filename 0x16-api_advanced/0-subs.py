@@ -9,7 +9,7 @@ def number_of_subscribers(subreddit):
     If an invalid subreddit is given, returns 0.
     """
     url = f'https://www.reddit.com/r/{subreddit}/about.json'
-    headers = {'User-Agent': 'my_reddit_app/0.1 (by /u/AugustinosAbusaif)'}
+    headers = {'User-agent': 'myAPIbot/0.1'}
 
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
@@ -17,8 +17,7 @@ def number_of_subscribers(subreddit):
             data = response.json()
             return data['data']['subscribers']
         else:
-            print(f"Error: Received status code {response.status_code}")
             return 0
     except requests.RequestException as e:
-        print(f"Request Exception: {e}")
+        print(f"Request failed: {e}")
         return 0
