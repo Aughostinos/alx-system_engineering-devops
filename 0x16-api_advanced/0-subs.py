@@ -6,7 +6,7 @@ import requests
 def get_reddit_token(client_id, client_secret, username, password):
     auth = requests.auth.HTTPBasicAuth(client_id, client_secret)
     data = {'grant_type': 'password', 'username': username, 'password': password}
-    headers = {'User-Agent': 'myAPIbot/0.1'}
+    headers = {'User-Agent': 'Augustbot/0.1'}
 
     response = requests.post('https://www.reddit.com/api/v1/access_token', auth=auth, data=data, headers=headers)
     response.raise_for_status()
