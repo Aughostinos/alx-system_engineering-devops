@@ -4,14 +4,23 @@ import requests
 
 
 def get_reddit_token(client_id, client_secret, username, password):
+    """authentication"""
     auth = requests.auth.HTTPBasicAuth(client_id, client_secret)
-    data = {'grant_type': 'password', 'username': username, 'password': password}
-    headers = {'User-Agent': 'Augustbot/0.1'}
+    data = {
+        'grant_type': 'password',
+        'username': username,
+        'password': password
+    }
+    headers = {'User-Agent': 'Augustbot'}
 
-    response = requests.post('https://www.reddit.com/api/v1/access_token', auth=auth, data=data, headers=headers)
+    response = requests.post(
+        'https://www.reddit.com/api/v1/access_token',
+        auth=auth, data=data, headers=headers
+    )
     response.raise_for_status()
     token = response.json().get('access_token')
     return token
+
 
 def top_ten(subreddit):
     """
@@ -29,7 +38,10 @@ def top_ten(subreddit):
         return
 
     url = f'https://oauth.reddit.com/r/{subreddit}/hot'
-    headers = {'Authorization': f'bearer {token}', 'User-Agent': 'myAPIbot/0.1'}
+    headers = {
+        'Authorization': f'bearer {token}',
+        'User-Agent': 'myAPIbot/0.1'
+    }
     params = {'limit': 10}
 
     try:
@@ -42,5 +54,5 @@ def top_ten(subreddit):
                 print(post['data']['title'])
         else:
             print(None)
-    except requests.RequestException as e:
+    except requests.RequestException:
         print(None)
