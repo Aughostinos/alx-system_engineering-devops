@@ -20,7 +20,7 @@ def number_of_subscribers(subreddit):
     """
     client_id = 'I89Gxobf1Iskg-ZjHb_9cg'
     client_secret = '68NzNnNJqk3g0dVDprHo6eORqQepeQ'
-    username = 'AugustinosAbusaif'
+    username = 'AugustinosAbusaif '
     password = 'Alx@123#!'
     token = get_reddit_token(client_id, client_secret, username, password)
 
