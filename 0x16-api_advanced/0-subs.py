@@ -1,4 +1,7 @@
+#!/usr/bin/python3
+"""API advanced project"""
 import requests
+
 
 def number_of_subscribers(subreddit):
     """
@@ -19,11 +22,3 @@ def number_of_subscribers(subreddit):
     except requests.RequestException as e:
         print(f"Request Exception: {e}")
         return 0
-
-# Testing the function with a main script as given in the problem statement
-if __name__ == "__main__":
-    import sys
-    if len(sys.argv) < 2:
-        print("Please pass an argument for the subreddit to search.")
-    else:
-        print("{:d}".format(number_of_subscribers(sys.argv[1])))
