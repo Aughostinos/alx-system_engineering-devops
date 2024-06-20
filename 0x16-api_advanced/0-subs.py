@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """api advanced project"""
-
-sudo pip install praw
-
 import praw
+import sys
+
 
 def number_of_subscribers(subreddit):
     """
@@ -22,7 +21,6 @@ def number_of_subscribers(subreddit):
         return 0
 
 if __name__ == '__main__':
-    import sys
     if len(sys.argv) < 2:
         print("Please pass an argument for the subreddit to search.")
     else:
