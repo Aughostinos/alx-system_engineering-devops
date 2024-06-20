@@ -1,26 +1,29 @@
 #!/usr/bin/python3
 """api advanced project"""
-import requests
+
+sudo pip install praw
+
+import praw
 
 def number_of_subscribers(subreddit):
     """
     Queries the Reddit API and returns the number of subscribers for a given
     subreddit. If an invalid subreddit is given, returns 0.
     """
-    url = f'https://www.reddit.com/r/{subreddit}/about.json'
-    headers = {'User-Agent': 'Augustbot'}
-
+    reddit = praw.Reddit(
+        client_id="_VeUTcfD1A12_rL3fxvyRQ",
+        client_secret="u78lzkzPyQs68rNrPuaZTz4mpa1cjA",
+        user_agent="AugustBot/0.0.1"
+    )
     try:
-        response = requests.get(url, headers=headers, allow_redirects=False)
-        print(f"Response status code: {response.status_code}")
-        
-        if response.status_code == 200:
-            data = response.json()
-            print(f"Response data: {data}")
-            return data['data']['subscribers']
-        else:
-            print(f"Non-200 status code: {response.status_code}")
-            return 0
-    except requests.RequestException as e:
-        print(f"Request failed: {e}")
+        subreddit_obj = reddit.subreddit(subreddit)
+        return subreddit_obj.subscribers
+    except praw.exceptions.PRAWException:
         return 0
+
+if __name__ == '__main__':
+    import sys
+    if len(sys.argv) < 2:
+        print("Please pass an argument for the subreddit to search.")
+    else:
+        print("{:d}".format(number_of_subscribers(sys.argv[1])))
