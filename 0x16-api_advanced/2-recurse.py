@@ -2,6 +2,7 @@
 """API advanced project"""
 import requests
 
+
 def get_reddit_token(client_id, client_secret, username, password):
     """authentication"""
     auth = requests.auth.HTTPBasicAuth(client_id, client_secret)
