@@ -40,4 +40,3 @@ def count_words(subreddit, word_list, after='', count_dict=None):
         return
 
     return count_words(subreddit, word_list, after, count_dict)
-
