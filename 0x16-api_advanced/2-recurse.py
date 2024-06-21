@@ -27,8 +27,8 @@ def recurse(subreddit, hot_list=[], after=None):
     articles for a given subreddit. If no results are found for the given
     subreddit, returns None.
     """
-    client_id = 'I89Gxobf1Iskg-ZjHb_9cg'
-    client_secret = '68NzNnNJqk3g0dVDprHo6eORqQepeQ'
+    client_id = '_VeUTcfD1A12_rL3fxvyRQ'
+    client_secret = 'u78lzkzPyQs68rNrPuaZTz4mpa1cjA'
     username = 'AugustinosAbusaif'
     password = 'Alx@123#!'
     token = get_reddit_token(client_id, client_secret, username, password)
