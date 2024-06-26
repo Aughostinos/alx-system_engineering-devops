@@ -1,4 +1,5 @@
 #Puppet Manifest
+#change the ULIMITS
 
 file { '/etc/default/nginx':
   ensure  => file,
