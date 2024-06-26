@@ -14,5 +14,5 @@ service { 'nginx':
 exec { 'restart-nginx':
   command     => '/usr/sbin/service nginx restart',
   refreshonly => true,
-  subscribes  => File['/etc/default/nginx'],
+  subscribe  => File['/etc/default/nginx'],
 }
