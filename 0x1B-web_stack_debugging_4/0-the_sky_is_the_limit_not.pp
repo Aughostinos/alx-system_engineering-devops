@@ -1,8 +1,18 @@
 #Puppet Manifest
 
-exec { 'Increase_limits':
-  command => "echo 'worker_rlimit_nofile 4096;' >> /etc/nginx/nginx.conf",
-  path    => ['/usr/local/bin', '/bin'],
-  unless  => "grep -q 'worker_rlimit_nofile 4096;' /etc/nginx/nginx.conf",
-  notify  => Service['nginx']
+file { '/etc/default/nginx':
+  ensure  => file,
+  content => 'ULIMIT="-n 4096"',
+}
+
+service { 'nginx':
+  ensure    => running,
+  enable    => true,
+  subscribe => File['/etc/default/nginx'],
+}
+
+exec { 'restart-nginx':
+  command     => '/usr/sbin/service nginx restart',
+  refreshonly => true,
+  subscribes  => File['/etc/default/nginx'],
 }
